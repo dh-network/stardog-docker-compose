@@ -1,0 +1,17 @@
+services:
+  stardog:
+    image: stardog/stardog:latest
+    ports:
+      - "5820:5820"
+    expose:
+      - "5820"
+    volumes:
+      - ./stardog-home:/var/opt/stardog
+  stardog-studio:
+    image: stardog/stardog-studio:current
+    ports:
+      - "8888:8080"
+    expose:
+      - "8888"
+    depends_on:
+      - stardog
